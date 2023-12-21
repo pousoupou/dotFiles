@@ -1,0 +1,11 @@
+[user]
+	name = pousoupou
+	email = pousoupou@gmail.com
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[pull]
+	rebase = false
+[core]
+	editor = code --wait
