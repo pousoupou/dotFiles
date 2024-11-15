@@ -106,9 +106,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-
-[ -f "/Users/pousoupou/.ghcup/env" ] && source "/Users/pousoupou/.ghcup/env" # ghcup-env
 
 alias python=/usr/bin/python3
 alias pip=/usr/bin/pip3
