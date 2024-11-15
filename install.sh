@@ -42,10 +42,11 @@ if [ $os = "Linux" ]; then
     ./install.sh "ComicShannsMono Nerd Font"
     cd ..
 
-    
+
 fi
 
 # install nvchad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 
-
+# finally stow
+./stow.sh
