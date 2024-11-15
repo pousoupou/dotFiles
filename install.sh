@@ -3,13 +3,6 @@
 # get system os
 os=$(uname -s)
 
-# if os = macos install brew
-if [ $os = "Darwin" ]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    brew install stow
-    brew install neovim
-fi
-
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -22,6 +15,15 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 # install zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
+# specific to each OS
+
+# if os = macos install brew
+if [ $os = "Darwin" ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew install stow
+    brew install neovim
+fi
+
 # if os = fedora install neovim
 if [ $os = "Linux" ]; then
     sudo dnf install -y neovim python3-neovim
@@ -31,3 +33,11 @@ fi
 
 # install nvchad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+
+# for every directory in dotfiles
+for dir in $(ls dotfiles); do
+    # if directory is not . or ..
+    if [ $dir != "." ] && [ $dir != ".." ]; then 
+        
+    fi
+done
