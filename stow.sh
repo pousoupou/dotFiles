@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/zsh
 
 # Define the path to your Stow directory (adjust if needed)
 STOW_DIR="$HOME/dotFiles"
