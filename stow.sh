@@ -11,16 +11,14 @@ get_stow_targets() {
 # Function to delete existing files or directories
 remove_files() {
   for file in $(get_stow_targets); do
-    if ! [ $file = ".git" ] then
-      TARGET="$HOME/$file"
+    TARGET="$HOME/$file"
       
-      # Check if the target file or symlink exists
-      if [ -e "$TARGET" ] || [ -L "$TARGET" ]; then
-        echo "Removing $TARGET..."
-        rm -rf "$TARGET"
-      else
-        echo "$TARGET does not exist, skipping..."
-      fi
+    # Check if the target file or symlink exists
+    if [ -e "$TARGET" ] || [ -L "$TARGET" ]; then
+      echo "Removing $TARGET..."
+      rm -rf "$TARGET"
+    else
+      echo "$TARGET does not exist, skipping..."
     fi
   done
 }
