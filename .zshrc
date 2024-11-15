@@ -26,7 +26,6 @@ plugins=(git
         zsh-autosuggestions
         zsh-syntax-highlighting
         fzf
-        fzf-tab
         )
 
 source $ZSH/oh-my-zsh.sh
@@ -47,8 +46,8 @@ source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 # fi
 
 # if [ $os = "Linux" ]; then
-  source ~/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # fi
 
 

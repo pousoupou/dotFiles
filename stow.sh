@@ -5,7 +5,7 @@ STOW_DIR="$HOME/dotFiles"
 
 # Function to get a list of files and directories from the Stow packages
 get_stow_targets() {
-  find "$STOW_DIR" -type f -o -type l | sed "s|$STOW_DIR/||" | awk -F'/' '{print $2}'
+  find "$STOW_DIR" -type f -o -type l | sed "s|$STOW_DIR/||"
 }
 
 # Function to delete existing files or directories
