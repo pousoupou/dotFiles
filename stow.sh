@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/zsh
 
 # Define the path to your Stow directory (adjust if needed)
 STOW_DIR="$HOME/dotFiles"
@@ -34,6 +34,7 @@ cd "$STOW_DIR" || { echo "Error: Stow directory not found"; exit 1; }
 
 # Remove files
 echo "Cleaning up existing dotfiles..."
+stow -D .
 remove_files
 
 # Run Stow to symlink your dotfiles
