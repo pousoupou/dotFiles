@@ -26,6 +26,7 @@ if [ $os = "Darwin" ]; then
     brew install fzf
     brew install fd
     brew install neovim
+    brew install kitty
 fi
 
 # if os = fedora
@@ -35,6 +36,7 @@ if [ $os = "Linux" ]; then
     sudo dnf install fzf
     sudo dnf install fd-find
     sudo dnf install -y neovim python3-neovim
+    sudo dnf install kitty 
 
     # install font
     git clone --depth=1 https://github.com/ryanoasis/nerd-fonts.git
