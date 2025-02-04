@@ -41,11 +41,9 @@ if [ $os = "Linux" ]; then
     # install font
     git clone --depth=1 https://github.com/ryanoasis/nerd-fonts.git
     cd nerd-fonts
-    ./install.sh "ComicShannsMono Nerd Font"
-    rm -rf nerd-fonts
+    ./install.sh "ComicShannsMono"
     cd ..
-
-
+    rm -rf nerd-fonts
 fi
 
 # install nvchad
