@@ -84,7 +84,7 @@ fi
 # if os = fedora
 if [ $os = "Linux" ]; then
     sudo dnf update -y
-    
+
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo >> $HOME/.zshrc
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.zshrc
@@ -108,6 +108,8 @@ if [ $os = "Linux" ]; then
 
     sudo dnf update-check -y
     sudo dnf install code -y
+
+    sudo dnf install gh
 fi
 
 # install nvchad
