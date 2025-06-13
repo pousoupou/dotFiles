@@ -53,3 +53,5 @@ source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 source <(fzf --zsh)
 
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
