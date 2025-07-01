@@ -86,8 +86,6 @@ if [ $os = "Linux" ]; then
     sudo dnf update -y
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo >> $HOME/.zshrc
-    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.zshrc
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     sudo dnf group install development-tools
     # ===============================================================================================

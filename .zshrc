@@ -1,3 +1,7 @@
+if [ $(uname -s) = "Linux" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -40,18 +44,14 @@ source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 # os = $(uname -s)
 
-# if [ $os = "Darwin" ]; then
-#   source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-#   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# fi
+if [ $(uname -s) = "Darwin" ]; then
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
-# if [ $os = "Linux" ]; then
+if [ $(uname -s) = "Linux" ]; then
   source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
   source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# fi
-
+fi
 
 source <(fzf --zsh)
-
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
