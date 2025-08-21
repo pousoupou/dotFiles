@@ -55,3 +55,5 @@ if [ $(uname -s) = "Linux" ]; then
 fi
 
 source <(fzf --zsh)
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
