@@ -102,7 +102,10 @@ if [ $os = "Linux" ]; then
             sudo dnf install fzf
             sudo dnf install fd-find
             sudo dnf install -y neovim python3-neovim
-            sudo dnf install kitty 
+            sudo dnf install kitty
+            sudo dnf install notify-send
+            sudo dnf install lolcat
+            sudo dnf install timer
 
             sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
             echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
@@ -128,10 +131,10 @@ if [ $os = "Linux" ]; then
             fi
 
             # Install packages via pacman
-            sudo pacman -S --noconfirm stow ripgrep fzf fd neovim python-pynvim kitty github-cli
+            sudo pacman -S --noconfirm stow ripgrep fzf fd neovim python-pynvim kitty github-cli lolcat
 
             # Install Visual Studio Code
-            yay -S --noconfirm visual-studio-code-bin
+            yay -S --noconfirm visual-studio-code-bin timer-bin
 
             # Optional: Install Homebrew on Linux for compatibility
             if ! command_exists brew; then

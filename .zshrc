@@ -58,9 +58,9 @@ if [ $(uname -s) = "Linux" ]; then
   pomodoro () {
     if [ -n "$1" -a -n "${pomo_options["$1"]}" ]; then
     val=$1
-    echo $val | lolcat
+    echo "An eiste 5 fygete, an eiste 10 elate" | lolcat
     timer ${pomo_options["$val"]}m
-    spd-say "'$val' session done"
+    notify-send "'$val' session done"
     fi
   }
 
