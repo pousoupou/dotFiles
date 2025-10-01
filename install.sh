@@ -81,33 +81,84 @@ if [ $os = "Darwin" ]; then
     brew install kitty
 fi
 
-# if os = fedora
+# Linux-specific installations
 if [ $os = "Linux" ]; then
-    sudo dnf update -y
+    case "$distro" in
+        fedora|rhel|centos)
+            echo "Installing packages for Fedora/RHEL/CentOS..."
+            sudo dnf update -y
 
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    sudo dnf group install development-tools
-    # ===============================================================================================
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+            sudo dnf group install development-tools
+            # ===============================================================================================
 
-    brew install --cask font-comic-shanns-mono-nerd-font
-    brew install --cask font-jetbrains-mono-nerd-font
-    brew install --cask font-sauce-code-pro-nerd-font
+            brew install --cask font-comic-shanns-mono-nerd-font
+            brew install --cask font-jetbrains-mono-nerd-font
+            brew install --cask font-sauce-code-pro-nerd-font
 
-    sudo dnf install stow
-    sudo dnf install ripgrep
-    sudo dnf install fzf
-    sudo dnf install fd-find
-    sudo dnf install -y neovim python3-neovim
-    sudo dnf install kitty 
+            sudo dnf install stow
+            sudo dnf install ripgrep
+            sudo dnf install fzf
+            sudo dnf install fd-find
+            sudo dnf install -y neovim python3-neovim
+            sudo dnf install kitty 
 
-    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-    echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+            sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+            echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
 
-    sudo dnf update-check -y
-    sudo dnf install code -y
+            sudo dnf update-check -y
+            sudo dnf install code -y
 
-    sudo dnf install gh
+            sudo dnf install gh
+            ;;
+        arch|manjaro)
+            echo "Installing packages for Arch Linux/Manjaro..."
+            sudo pacman -Syu --noconfirm
+
+            # Install AUR helper (yay) if not present
+            if ! command_exists yay; then
+                echo "Installing yay AUR helper..."
+                sudo pacman -S --needed --noconfirm base-devel git
+                cd /tmp
+                git clone https://aur.archlinux.org/yay.git
+                cd yay
+                makepkg -si --noconfirm
+                cd ~
+            fi
+
+            # Install packages via pacman
+            sudo pacman -S --noconfirm stow ripgrep fzf fd neovim python-pynvim kitty github-cli
+
+            # Install Visual Studio Code
+            yay -S --noconfirm visual-studio-code-bin
+
+            # Optional: Install Homebrew on Linux for compatibility
+            if ! command_exists brew; then
+                echo "Installing Homebrew for Linux (optional)..."
+                /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+                eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+            fi
+
+            brew install --cask font-comic-shanns-mono-nerd-font
+            brew install --cask font-jetbrains-mono-nerd-font
+            brew install --cask font-sauce-code-pro-nerd-font
+            
+            ;;
+        ubuntu|debian)
+            echo "Installing packages for Ubuntu/Debian..."
+            sudo apt-get update
+            # Add Ubuntu/Debian specific packages here if needed
+            echo "Ubuntu/Debian support can be extended here"
+            ;;
+        *)
+            echo "Unsupported Linux distribution: $distro"
+            echo "Please install the required packages manually:"
+            echo "- stow, ripgrep, fzf, fd, neovim, kitty, github-cli"
+            echo "- Nerd fonts (Comic Shanns Mono, JetBrains Mono, Source Code Pro)"
+            echo "- Visual Studio Code"
+            ;;
+    esac
 fi
 
 # install nvchad
