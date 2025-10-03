@@ -79,6 +79,8 @@ if [ $os = "Darwin" ]; then
     brew install fd
     brew install neovim
     brew install kitty
+    brew install terminal-notifier
+    brew install caarlos0/tap/timer
 fi
 
 # Linux-specific installations

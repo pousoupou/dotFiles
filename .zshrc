@@ -47,6 +47,24 @@ source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 if [ $(uname -s) = "Darwin" ]; then
   source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+  # alias wo="timer 60m && terminal-notifier -message 'Pomodoro'\
+  #       -title 'Work Timer is up! Take a Break 😊'\
+  #       -appIcon '~/Pictures/pumpkin.png'\
+  #       -sound Crystal"
+        
+  # alias br="timer 10m && terminal-notifier -message 'Pomodoro'\
+  #       -title 'Break is over! Get back to work 😬'\
+  #       -appIcon '~/Pictures/pumpkin.png'\
+  #       -sound Crystal"
+  
+  alias wo="timer 45m && terminal-notifier -message 'Pomodoro'\
+        -title 'Work Timer is up! Take a Break 😊'\
+        -sound Crystal"
+        
+  alias br="timer 10m && terminal-notifier -message 'Pomodoro'\
+        -title 'Break is over! Get back to work 😬'\
+        -sound Crystal"
 fi
 
 if [ $(uname -s) = "Linux" ]; then
@@ -73,5 +91,3 @@ if [ $(uname -s) = "Linux" ]; then
 fi
 
 source <(fzf --zsh)
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
